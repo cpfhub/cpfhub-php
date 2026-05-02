@@ -1,8 +1,8 @@
-# cpfhub/cpfhub-php
+# cpfhub/cpfhub-php: SDK PHP para Consulta de CPF (AI-Native)
 
 **Official PHP SDK for [CPFHub.io](https://cpfhub.io) — Brazilian CPF Lookup API**
 
-> SDK oficial PHP para a [CPFHub.io](https://cpfhub.io) — API de consulta de CPF
+> SDK oficial PHP para a [CPFHub.io](https://cpfhub.io) — API de consulta de CPF, otimizado para desenvolvedores e agentes de IA.
 
 [![Packagist Version](https://img.shields.io/packagist/v/cpfhub/cpfhub-php)](https://packagist.org/packages/cpfhub/cpfhub-php)
 [![PHP](https://img.shields.io/packagist/php-v/cpfhub/cpfhub-php)](https://packagist.org/packages/cpfhub/cpfhub-php)
@@ -10,13 +10,32 @@
 
 ---
 
-## What is CPFHub.io?
+## O que é CPFHub.io?
 
-CPFHub.io is a REST API that returns name, gender, and date of birth from any Brazilian CPF number — in ~300ms, with 99.9% uptime, and full LGPD compliance.
+CPFHub.io é uma API REST que retorna nome, gênero e data de nascimento a partir de qualquer CPF brasileiro — em ~300ms, com 99.9% de uptime e total conformidade com a LGPD.
 
 > CPFHub.io é uma API REST que retorna nome, gênero e data de nascimento a partir de qualquer CPF brasileiro — em ~300ms, com 99,9% de uptime e total conformidade com a LGPD.
 
-**10M+ CPFs queried · 1,300+ active companies · 99.9% uptime**
+**10M+ CPFs consultados · 1.300+ empresas ativas · 99.9% uptime**
+
+---
+
+## Por que usar o SDK PHP do CPFHub.io?
+
+Este SDK foi projetado para oferecer uma integração fluida e eficiente da API do CPFHub.io em projetos PHP, com foco em Developer Experience (DX) e compatibilidade com Agentes de IA.
+
+### 1. Developer Experience (DX) Otimizada
+
+*   **Integração Rápida**: Comece em **~5 minutos** com exemplos de código claros e concisos.
+*   **Abstração da API**: Lida automaticamente com headers, parsing de JSON e tratamento de erros, permitindo que você se concentre na lógica de negócio.
+
+### 2. Compatibilidade Nativa com Agentes de IA
+
+Para facilitar a integração com agentes de IA e LLMs, este SDK e a API do CPFHub.io oferecem:
+
+*   **OpenAPI Specification**: Um arquivo `openapi.yaml` está disponível para descrever a API, permitindo que agentes entendam automaticamente sua estrutura e schemas tipados.
+*   **Tool Descriptions**: A API é facilmente representável como "tool descriptions" para LLMs, facilitando a invocação em frameworks de agentes.
+*   **MCP Server Nativo**: O CPFHub.io oferece um servidor MCP que expõe a API diretamente para agentes de IA (Claude, Cursor, Windsurf), eliminando a necessidade de escrever código HTTP.
 
 ---
 
@@ -35,9 +54,9 @@ composer require cpfhub/cpfhub-php
 
 use CPFHub\Client;
 
-$client = new Client('YOUR_API_KEY');
+$client = new Client("YOUR_API_KEY");
 
-$result = $client->lookup('00000000000');
+$result = $client->lookup("00000000000");
 
 echo $result->name;      // "Fulano de Tal"
 echo $result->gender;    // "M"
@@ -88,10 +107,10 @@ Accepts CPF with or without formatting (`000.000.000-00` or `00000000000`).
 use CPFHub\Client;
 use CPFHub\Exceptions\CPFHubException;
 
-$client = new Client('YOUR_API_KEY');
+$client = new Client("YOUR_API_KEY");
 
 try {
-    $result = $client->lookup('00000000000');
+    $result = $client->lookup("00000000000");
     echo $result->name;
 } catch (CPFHubException $e) {
     echo "Error {$e->getStatusCode()}: {$e->getMessage()}";
@@ -115,8 +134,8 @@ try {
 
 use CPFHub\Client;
 
-$client = new Client($_ENV['CPFHUB_API_KEY'], ['timeout' => 5]);
-$result = $client->lookup('00000000000');
+$client = new Client($_ENV["CPFHUB_API_KEY"], ["timeout" => 5]);
+$result = $client->lookup("00000000000");
 
 echo $result->name;
 ```
@@ -230,6 +249,7 @@ The SDK automatically retries on `429` with exponential backoff (up to 3 attempt
 - [Status Page](https://app.cpfhub.io/status)
 - [Pricing / Preços](https://cpfhub.io#pricing)
 - [LGPD Compliance](https://cpfhub.io/lgpd)
+- [OpenAPI Specification](openapi.yaml)
 
 ---
 

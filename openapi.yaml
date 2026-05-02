@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: CPFHub PHP SDK API
+  version: 1.0.0
+  description: SDK PHP para consulta de CPFs brasileiros, fornecendo nome completo, data de nascimento e sexo.
+servers:
+  - url: https://api.cpfhub.io
+paths:
+  /cpf/{cpf_number}:
+    get:
+      summary: Consultar CPF
+      operationId: consultCpf
+      description: Realiza a consulta de um número de CPF e retorna informações associadas.
+      parameters:
+        - in: path
+          name: cpf_number
+          schema:
+            type: string
+            pattern: "^\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}$"
+          required: true
+          description: O número de CPF de 11 dígitos a ser consultado. Formato: XXX.XXX.XXX-XX ou XXXXXXXXXXX.
+          example: "123.456.789-00"
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+          required: true
+          description: Sua chave de API para autenticação.
+      responses:
+        '200':
+          description: Consulta bem-sucedida, dados do CPF retornados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indica se a consulta foi bem-sucedida.
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      cpf:
+                        type: string
+                        description: O número de CPF consultado.
+                        example: "12345678900"
+                      name:
+                        type: string
+                        description: Nome completo do titular.
+                        example: "Fulano de Tal"
+                      nameUpper:
+                        type: string
+                        description: Nome completo em maiúsculas.
+                        example: "FULANO DE TAL"
+                      gender:
+                        type: string
+                        description: Gênero (M/F).
+                        example: "M"
+                      birthDate:
+                        type: string
+                        description: Data de nascimento (DD/MM/YYYY).
+                        example: "15/06/1990"
+                      day:
+                        type: number
+                        description: Dia de nascimento.
+                        example: 15
+                      month:
+                        type: number
+                        description: Mês de nascimento.
+                        example: 6
+                      year:
+                        type: number
+                        description: Ano de nascimento.
+                        example: 1990
+        '401':
+          description: Não autorizado - Chave de API inválida.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized - Invalid API Key"
+        '404':
+          description: CPF não encontrado ou inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "CPF not found or invalid"
