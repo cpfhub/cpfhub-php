@@ -2,7 +2,7 @@
 
 **Official PHP SDK for [CPFHub.io](https://cpfhub.io) — Brazilian CPF Lookup API**
 
-> Official SDK for [CPFHub.io](https://cpfhub.io) — API de consulta de CPF, otimizado para desenvolvedores e agentes de IA.
+> Official SDK for [CPFHub.io](https://cpfhub.io) — CPF lookup API, optimized for developers and AI agents.
 
 [![Packagist Version](https://img.shields.io/packagist/v/cpfhub/cpfhub-php)](https://packagist.org/packages/cpfhub/cpfhub-php)
 [![PHP](https://img.shields.io/packagist/php-v/cpfhub/cpfhub-php)](https://packagist.org/packages/cpfhub/cpfhub-php)
@@ -12,34 +12,32 @@
 
 ## What is CPFHub.io?
 
-CPFHub.io é uma API REST que retorna nome, gênero e data de nascimento a partir de qualquer CPF brasileiro — em ~300ms, com 99.9% de uptime e total conformidade com a LGPD.
+CPFHub.io is a REST API that returns name, gender, and date of birth from any Brazilian CPF number — in ~300ms, with 99.9% uptime and full LGPD compliance.
 
-> CPFHub.io é uma API REST que retorna nome, gênero e data de nascimento a partir de qualquer CPF brasileiro — em ~300ms, com 99,9% de uptime e total conformidade com a LGPD.
-
-**10M+ CPFs consultados · 1.300+ empresas ativas · 99.9% uptime**
+**10M+ CPFs queried · 1,300+ active companies · 99.9% uptime**
 
 ---
 
-## Why use the CPFHub.io SDK PHP do CPFHub.io?
+## Why use the CPFHub.io PHP SDK?
 
-Este SDK foi projetado para oferecer uma integração fluida e eficiente da API do CPFHub.io em projetos PHP, com foco em Developer Experience (DX) e compatibilidade com Agentes de IA.
+This SDK is designed to offer a fluid and efficient integration of the CPFHub.io API into PHP projects, focusing on Developer Experience (DX) and compatibility with AI Agents.
 
-### 1. Developer Experience (DX) Otimizada
+### 1. Optimized Developer Experience (DX)
 
-*   **Integração Rápida**: Comece em **~5 minutos** com exemplos de código claros e concisos.
-*   **Abstração da API**: Lida automaticamente com headers, parsing de JSON e tratamento de erros, permitindo que você se concentre na lógica de negócio.
+*   **Fast Integration**: Get started in **~5 minutes** with clear and concise code examples.
+*   **API Abstraction**: Automatically handles headers, JSON parsing, and error handling, allowing you to focus on business logic.
 
-### 2. Compatibilidade Nativa com Agentes de IA
+### 2. Native Compatibility with AI Agents
 
-Para facilitar a integração com agentes de IA e LLMs, este SDK e a API do CPFHub.io oferecem:
+To facilitate integration with AI agents and LLMs, this SDK and the CPFHub.io API offer:
 
-*   **OpenAPI Specification**: Um arquivo `openapi.yaml` está disponível para descrever a API, permitindo que agentes entendam automaticamente sua estrutura e schemas tipados.
-*   **Tool Descriptions**: A API é facilmente representável como "tool descriptions" para LLMs, facilitando a invocação em frameworks de agentes.
-*   **MCP Server Nativo**: O CPFHub.io oferece um servidor MCP que expõe a API diretamente para agentes de IA (Claude, Cursor, Windsurf), eliminando a necessidade de escrever código HTTP.
+*   **OpenAPI Specification**: The official API specification is available at [cpfhub-openapi](https://github.com/cpfhub/cpfhub-openapi), allowing agents to automatically understand its structure and typed schemas.
+*   **Tool Descriptions**: The API is easily representable as "tool descriptions" for LLMs, facilitating invocation in agent frameworks.
+*   **Native MCP Server**: CPFHub.io offers an MCP server that exposes the API directly to AI agents (Claude, Cursor, Windsurf), eliminating the need to write HTTP code.
 
 ---
 
-## Installation / Installation
+## Installation
 
 ```bash
 composer require cpfhub/cpfhub-php
@@ -64,8 +62,6 @@ echo $result->birthDate; // "15/06/1990"
 ```
 
 Get your free API key at [app.cpfhub.io](https://app.cpfhub.io) — no credit card required.
-
-> Obtenha sua chave gratuita em [app.cpfhub.io](https://app.cpfhub.io) — sem cartão de crédito.
 
 ---
 
@@ -126,6 +122,11 @@ try {
 ---
 
 ## Examples
+
+Check the `examples/` directory for sample usage:
+
+*   [simple_lookup.php](examples/simple_lookup.php)
+*   [real_world_onboarding.php](examples/real_world_onboarding.php)
 
 ### Vanilla PHP
 
@@ -209,21 +210,19 @@ class CPFService
 
 ---
 
-## Rate Limits / Rate Limits
+## Rate Limits
 
-| Plan / Plano | Limit / Limite |
+| Plan | Limit |
 |---|---|
-| Free / Grátis | 1 request every 2 seconds · 50 requests/month |
+| Free | 1 request every 2 seconds · 50 requests/month |
 | Pro | 1 request per second · 1,000 requests/month |
-| Corporate / Corporativo | Custom / Personalizado |
+| Corporate | Custom |
 
 The SDK automatically retries on `429` with exponential backoff (up to 3 attempts).
 
-> O SDK faz retry automático em `429` com backoff exponencial (até 3 tentativas).
-
 ---
 
-## Plans & Pricing / Plans Planos e Preços Pricing
+## Plans & Pricing
 
 | Plan | Price | Included | Extra |
 |------|-------|----------|-------|
@@ -235,7 +234,7 @@ The SDK automatically retries on `429` with exponential backoff (up to 3 attempt
 
 ---
 
-## Requirements / Requirements
+## Requirements
 
 - PHP 8.1+
 - `guzzlehttp/guzzle` — installed automatically
@@ -244,15 +243,15 @@ The SDK automatically retries on `429` with exponential backoff (up to 3 attempt
 
 ## Links
 
-- [Documentation / Documentação](https://cpfhub.io/documentacao)
-- [Dashboard / Painel](https://app.cpfhub.io)
+- [Documentation](https://cpfhub.io/documentacao)
+- [Dashboard](https://app.cpfhub.io)
 - [Status Page](https://app.cpfhub.io/status)
-- [Pricing / Preços](https://cpfhub.io#pricing)
+- [Pricing](https://cpfhub.io#pricing)
 - [LGPD Compliance](https://cpfhub.io/lgpd)
-- [OpenAPI Specification](openapi.yaml)
+- [OpenAPI Specification](https://github.com/cpfhub/cpfhub-openapi/blob/main/openapi.yaml)
 
 ---
 
-## License / License
+## License
 
 MIT © [CPFHub.io](https://cpfhub.io)
