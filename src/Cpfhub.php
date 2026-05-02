@@ -15,12 +15,12 @@ class Cpfhub
         // Placeholder for CPF data retrieval logic
         return [
             'is_valid' => true,
-            'status' => 'CPF válido',
+            'status' => 'CPF valid',
             'data' => [
-                'name' => 'Nome Fictício',
+                'name' => 'Fulano de Tal',
                 'status_receita' => 'Regular',
                 'birth_date' => '1990-01-01',
-                'address' => 'Rua Fictícia, 123'
+                'address' => 'Sample Street, 123'
             ]
         ];
     }

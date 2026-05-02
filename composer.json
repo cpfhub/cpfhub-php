@@ -1,6 +1,6 @@
 {
     "name": "cpfhub/cpfhub-php",
-    "description": "CPFHub.io PHP SDK for CPF validation and data retrieval",
+    "description": "Official PHP SDK for CPFHub.io — Brazilian CPF Lookup API",
     "type": "library",
     "license": "MIT",
     "autoload": {
